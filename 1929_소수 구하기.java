@@ -1,9 +1,7 @@
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.util.HashMap;
 import java.util.Scanner;
-import java.util.Vector;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -11,23 +9,17 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         int m = scanner.nextInt();
         int n = scanner.nextInt();
-        Vector<Integer> vec = new Vector<>();
-
-        int i = 1;
-        loops:
+        int[] arr = new int[n+1];
+        int i =1;
         while(i++ < n){
-            for(Integer it : vec){
-                if(i % it == 0) continue loops;
+            if(arr[i] == 0){
+                if(i >= m) bw.write(i + "\n");
+                int mul = 2;
+                for(int j=i*mul++; j<=n; j=i*mul++){
+                    arr[j] = 1;
+                }
             }
-            vec.add(i);
-            if(i>=m) bw.write(i + "\n");
         }
         bw.flush();
-
-        HashMap<Integer, Boolean> map = new HashMap<>();
-        for(int j=m; j<=n; j++){
-            map.put(j, true);
-        }
-
     }
 }
