@@ -14,13 +14,14 @@ public class Main{
 			input = scanner.nextInt();
 			if(input == -1) break;
 			else if(input > 0) {
+				if(queue.size() >= size) {
+					continue;
+				}
 				queue.add(input);
 			}else {
 				queue.poll();
 			}
-			if(queue.size() >= size) {
-				queue.clear();
-			}
+			
 		}
 		if(queue.size() == 0) {
 			System.out.print("empty");
